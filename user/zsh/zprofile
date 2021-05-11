@@ -1,0 +1,20 @@
+# Default umask
+umask 027
+
+# asdf config for support in graphical apps
+ASDF_DIR="${ASDF_DIR:-$HOME/.asdf}"
+if [[ -f "$ASDF_DIR/asdf.sh" ]]; then
+    . "$ASDF_DIR/asdf.sh"
+fi
+
+# Automatic sway launch
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+    # Wayland for java apps
+    export _JAVA_AWT_WM_NONREPARENTING=1
+    # Wayland for firefox
+    export MOZ_ENABLE_WAYLAND=1
+    # Wayland with both graphic cards
+    export WLR_DRM_DEVICES=/dev/dri/card0:/dev/dri/card1
+
+    exec sway > ~/.sway.log 2>&1
+fi

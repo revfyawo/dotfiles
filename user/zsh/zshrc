@@ -1,0 +1,40 @@
+# Oh my zsh configuration
+export ZSH=$HOME/.oh-my-zsh
+ZSH_THEME="agnoster"
+DEFAULT_USER="revfyawo"
+
+plugins=(
+    asdf
+    colored-man-pages
+    common-aliases
+    git
+    pass
+    vi-mode
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Export variables
+export EDITOR='vim'
+export LESS="--mouse --wheel-lines=3 $LESS"
+export VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+export MODE_INDICATOR="%F{blue}\ue0b2%K{blue}%F{black}NORMAL%k%f"
+
+# Aliases
+alias zshrc="$EDITOR ~/.zshrc && source ~/.zshrc"
+alias l='ls -F'
+alias ll='ls -lFh'
+alias la='ls -laFh'
+
+# Remove common-aliases plugin shit
+unalias cp
+unalias mv
+unalias rm
+
+# Needed GPG configuration for SSH agent
+export GPG_TTY=$(tty)
+gpg-connect-agent updatestartuptty /bye >/dev/null
