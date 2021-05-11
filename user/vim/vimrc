@@ -1,0 +1,22 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+    Plugin 'VundleVim/Vundle.vim'
+    Plugin 'vim-airline/vim-airline'
+call vundle#end()
+filetype plugin indent on    " required
+
+syntax on
+set mouse=a
+set number
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set smartindent
+set autoindent
+set bg=dark
+
+" set powerline symbols
+let g:airline_powerline_fonts = 1
