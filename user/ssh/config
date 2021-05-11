@@ -1,0 +1,11 @@
+Host *
+    ForwardAgent no
+	IdentitiesOnly yes
+	IdentityFile ~/.ssh/id_yubikey.pub
+    KexAlgorithms curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256
+    HostKeyAlgorithms ssh-rsa-cert-v01@openssh.com,ssh-rsa
+    Ciphers aes256-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-gcm@openssh.com,aes128-ctr
+    MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512
+	ServerAliveInterval 60
+	ServerAliveCountMax 5
+
